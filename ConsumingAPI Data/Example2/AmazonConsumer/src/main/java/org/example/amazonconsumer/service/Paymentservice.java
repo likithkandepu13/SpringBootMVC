@@ -24,9 +24,26 @@ public class Paymentservice {
     public String getAllPayemnts()
     {
         RestTemplate rt = new RestTemplate();
-        String url = "http://localhost:8080/getpaymentdetails";
+        String url = "http://localhost:8080/getallpaymentdetails";
 
         ResponseEntity<String> response= rt.exchange(url,HttpMethod.GET,null,String.class);
+        return response.getBody();
+    }
+
+    public String getPaymentId(int id)
+    {
+        RestTemplate rt=new RestTemplate();
+        String url ="http://localhost:8080/getpaymentdetails/{id}";
+        ResponseEntity<String> response = rt.exchange(url,HttpMethod.GET,null,String.class,id);
+        return response.getBody();
+
+    }
+
+    public String getPayemntBytypeandId(int id, String type)
+    {
+        RestTemplate rt=new RestTemplate();
+        String url ="http://localhost:8080/getpaymentdetails?id={id}&type={type}";
+        ResponseEntity<String> response = rt.exchange(url,HttpMethod.GET,null,String.class,id,type);
         return response.getBody();
     }
 }

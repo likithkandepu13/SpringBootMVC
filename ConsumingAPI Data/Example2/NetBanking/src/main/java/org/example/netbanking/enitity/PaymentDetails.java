@@ -1,6 +1,7 @@
 package org.example.netbanking.enitity;
 
 import jakarta.persistence.*;
+
 import lombok.Data;
 
 @Entity
@@ -8,14 +9,14 @@ import lombok.Data;
 public class PaymentDetails {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int paymentid;
 
     private String username;
 
     private int amount;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "payment_type")
     private PaymentType paymentType;
 }

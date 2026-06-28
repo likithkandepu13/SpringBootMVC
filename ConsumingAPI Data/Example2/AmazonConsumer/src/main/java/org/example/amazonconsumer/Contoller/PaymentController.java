@@ -3,10 +3,7 @@ package org.example.amazonconsumer.Contoller;
 import org.example.amazonconsumer.Model.PaymentModel;
 import org.example.amazonconsumer.service.Paymentservice;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,5 +24,17 @@ public class PaymentController
     public String getPayments()
     {
         return service.getAllPayemnts();
+    }
+
+    @GetMapping("getpayment/{id}")
+    public String getpaymentByid(@PathVariable("id") int id)
+    {
+        return service.getPaymentId(id);
+    }
+
+    @GetMapping("getpaymentdetails")
+    public String getPaymentByIDandType(@RequestParam("id") int id, @RequestParam("type") String type)
+    {
+        return service.getPayemntBytypeandId(id,type);
     }
 }

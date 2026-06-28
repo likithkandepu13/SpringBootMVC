@@ -11,6 +11,7 @@ import java.util.List;
 @Data
 public class PaymentType {
 
+    @Id
     private String paymenttype;
 
     @OneToMany(mappedBy = "paymentType")
