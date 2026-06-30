@@ -1,6 +1,7 @@
 package org.example.amazonconsumer.service;
 
 import org.example.amazonconsumer.Model.PaymentModel;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -21,12 +22,18 @@ public class Paymentservice {
         return response.getBody();
     }
 
-    public String getAllPayemnts()
-    {
+    public List<PaymentModel> getAllPayments() {
+
         RestTemplate rt = new RestTemplate();
         String url = "http://localhost:8080/getallpaymentdetails";
 
-        ResponseEntity<String> response= rt.exchange(url,HttpMethod.GET,null,String.class);
+        ResponseEntity<List<PaymentModel>> response = rt.exchange(
+                url,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<List<PaymentModel>>() {}
+        );
+
         return response.getBody();
     }
 

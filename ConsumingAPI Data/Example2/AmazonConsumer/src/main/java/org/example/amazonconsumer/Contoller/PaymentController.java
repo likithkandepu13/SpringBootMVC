@@ -21,9 +21,9 @@ public class PaymentController
     }
 
     @GetMapping("getpaymentsfromapi")
-    public String getPayments()
+    public List<PaymentModel> getPayments()
     {
-        return service.getAllPayemnts();
+        return service.getAllPayments();
     }
 
     @GetMapping("getpayment/{id}")
